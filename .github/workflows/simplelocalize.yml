@@ -15,7 +15,7 @@ jobs:
 
       - name: Export translations to SimpleLocalize
         env:
-          SIMPLELOCALIZE_PROJECT_TOKEN: ${{ secrets.SIMPLELOCALIZE_PROJECT_TOKEN }}
+          SIMPLELOCALIZE_PROJECT_TOKEN: 1841797e4f72487fa7cade73b888e4db
         run: |
           curl -H "Authorization: Bearer $SIMPLELOCALIZE_PROJECT_TOKEN" \
                -F "file=@translations.json" \
@@ -30,7 +30,7 @@ jobs:
 
       - name: Import translations from SimpleLocalize
         env:
-          SIMPLELOCALIZE_PROJECT_TOKEN: ${{ secrets.SIMPLELOCALIZE_PROJECT_TOKEN }}
+          SIMPLELOCALIZE_PROJECT_TOKEN: 1841797e4f72487fa7cade73b888e4db
         run: |
           curl -H "Authorization: Bearer $SIMPLELOCALIZE_PROJECT_TOKEN" \
                -F "file=@translations.json" \

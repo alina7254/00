@@ -1,3 +1,9 @@
+// src/i18n.ts
+
+export const cdnBaseUrl = "https://cdn.simplelocalize.io"; 
+export const environment = "_latest"; 
+export const projectToken = "1841797e4f72487fa7cade73b888e4db";
+
 import i18n from 'i18next';
 import Backend from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
@@ -7,23 +13,16 @@ import axios from "axios";
 const isProductionCode = process.env.NODE_ENV === 'production';
 const fallbackLanguage = 'en';
 
-export const projectToken = "1841797e4f72487fa7cade73b888e4db";  
-export const apiKey = "3064a562C0aEb7Ae5E0170402123dF4c5b49D88d85532c80";  
-
-
-const apiBaseUrl = "https://api.simplelocalize.io/api";
-const cdnBaseUrl = "https://cdn.simplelocalize.io";
-const environment = "_latest"; // or "_production"
 const loadPath = `${cdnBaseUrl}/${projectToken}/${environment}/{{lng}}`;
 const loadPathWithNamespaces = `${cdnBaseUrl}/${projectToken}/${environment}/{{lng}}/{{ns}}`;
 const configuration = {
     headers: {
-        'X-SimpleLocalize-Token': apiKey
+        'X-SimpleLocalize-Token': "3064a562C0aEb7Ae5E0170402123dF4c5b49D88d85532c80"
     }
 };
 
-const createTranslationKeys = async (requestBody) => axios.post(`${apiBaseUrl}/v1/translation-keys/bulk`, requestBody, configuration)
-const updateTranslations = async (requestBody) => axios.patch(`${apiBaseUrl}/v2/translations/bulk`, requestBody, configuration)
+const createTranslationKeys = async (requestBody) => axios.post(`${cdnBaseUrl}/v1/translation-keys/bulk`, requestBody, configuration);
+const updateTranslations = async (requestBody) => axios.patch(`${cdnBaseUrl}/v2/translations/bulk`, requestBody, configuration);
 
 const missing = [];
 const saveMissing = async () => {
@@ -75,7 +74,7 @@ i18n
                 fallbackValue: fallbackValue ?? ""
             });
         }
-    })
-
+    });
 
 export default i18n;
+

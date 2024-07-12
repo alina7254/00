@@ -23,9 +23,9 @@ const Navbar = ({ isSidebarOpen, toggleSidebar }) => {
           <FaBolt className="w-5 h-10 text-white" />
           <h1
             onClick={handleNavigate}
-            className="btn font-semibold subpixel-antialiased tracking-wide btn btn-link press-start-2p-regular text-md text-white lg:text-2xl no-underline hover:no-underline"
+            className="btn font-semibold subpixel-antialiased tracking-widest btn btn-link press-start-2p-regular text-md uppercase text-white lg:text-2xl no-underline hover:no-underline"
           >
-            БУРУНДУ.ЧАН
+            hackee.chan
           </h1>
 
           <div className="dropdown">
@@ -51,7 +51,7 @@ const Navbar = ({ isSidebarOpen, toggleSidebar }) => {
           <div className="form-control flex justify-end mr-4">
             <input
               type="text"
-              placeholder="поиск"
+              placeholder="search"
               className={`input input-bordered w-24 md:w-auto ${
                 isSearchOpen ? "block" : "hidden"
               } md:block`}
@@ -62,9 +62,9 @@ const Navbar = ({ isSidebarOpen, toggleSidebar }) => {
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost text-white text-xs sm:text-sm md:text-base lg:text-md tracking-wide press-start-2p-regular"
+              className="btn btn-ghost text-white text-xs uppercase sm:text-sm md:text-base lg:text-md tracking-wide press-start-2p-regular"
             >
-              ИНФО
+              info
             </div>
             <ul
               tabIndex={0}
@@ -126,9 +126,9 @@ const Navbar = ({ isSidebarOpen, toggleSidebar }) => {
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost text-white text-xs sm:text-sm md:text-base lg:text-md press-start-2p-regular"
+              className="btn btn-ghost text-white text-xs uppercase sm:text-sm md:text-base lg:text-md press-start-2p-regular"
             >
-              ТЕМЫ
+              theme
               <FaCaretDown className="h-5 w-5 fill-current inline-block ml-1" />
             </div>
             <ul

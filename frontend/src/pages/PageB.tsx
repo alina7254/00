@@ -1,20 +1,16 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Navbar from "../components/componentsList/Navbar";
 import Sidebar from "../components/componentsList/Sidebar";
 import HeaderThread from "../components/componentsList/HeaderThread";
 import Post from "../components/componentsList/Post";
+import ReplyBtn from "../components/componentsList/ReplyBtn";
+
 
 const PageB = () => {
-  const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  const handleClick = () => {
-    navigate("/");
   };
 
   return (
@@ -25,9 +21,17 @@ const PageB = () => {
         <div
           className={`flex flex-col flex-grow transition-all duration-300 ${isSidebarOpen ? "ml-64" : "ml-0"}`}
         >
-          <h1 className="uppercase text-primary font-extrabold text-2xl text-center press-start-2p-regular p-4">бред</h1>
+          <div className="flex flex-col mt-32">
+          <h1 className="text-primary text-2xl tracking-widest press-start-2p-regular text-center font-semibold">
+              /b/ - <span className="uppercase">random</span>
+            </h1>
+          </div>
+          <div className="divider divider-base-200"></div>
+          <ReplyBtn></ReplyBtn>
           <HeaderThread />
+          <div className="divider divider-base-200"></div>
           <Post />
+          <div className="divider divider-base-200"></div>
         </div>
       </div>
     </div>
@@ -35,5 +39,3 @@ const PageB = () => {
 };
 
 export default PageB;
-
-

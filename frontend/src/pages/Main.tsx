@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/componentsList/Navbar";
 import Sidebar from "../components/componentsList/Sidebar";
-import CreateThreadButton from "../components/componentsList/CreateThreadButton";
+import CreateBtn from "../components/componentsList/CreateBtn";
 import img1 from "@/assets/burunduk7.png";
 
 function MyComponent() {
@@ -43,12 +43,12 @@ function MyComponent() {
                   на зиму всякие корешки, всякие луковки.” - Неизвестный
                 </p>
                 <div className="flex flex-row space-x-2">
-                  <CreateThreadButton></CreateThreadButton>
+                  <CreateBtn></CreateBtn>
                   <button
                     onClick={handleClick}
-                    className="btn btn-primary btn-outline btn-wide press-start-2p-regular text-center tracking-wide"
+                    className="btn btn-primary btn-outline btn-wide press-start-2p-regular text-center uppercase tracking-wide"
                   >
-                    НА ГЛАВНУЮ
+                    view more
                   </button>
                 </div>
               </div>

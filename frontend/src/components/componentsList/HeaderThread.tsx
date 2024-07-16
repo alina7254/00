@@ -1,30 +1,43 @@
 import React from "react";
-import img1 from '@/assets/burunduk6.png';
+import img1 from "@/assets/burunduk6.png";
+import ReplyBtn from "./ReplyBtn";
 
 
 const HeaderThread = () => {
   return (
-    <div className="flex flex-col">
-      <div className="chat chat-bubble flex flex-col bg-base-100">
+    <div className="flex flex-col p-4">
+      <div className="chat chat-bubble bg-clip-border bg-base-200">
         <div className="chat-header text-sm text-base-content">
           Аноним 18/04/2024 Чтв 14:55:29 №123456789{" "}
-          <span className="uppercase text-primary font-bold">op</span>
+          <span className="uppercase text-accent font-bold">op</span>
         </div>
-      </div>
-      <div className="flex flex-row">
-        <img src={img1} alt="бурундук.жпг" className="flex w-1/4 ml-4"></img>
-        <span className="flex flex-col text-base-content ml-4">
-          <blockquote className="leading-relaxed subpixel-antialiased tracking-wide press-start-2p-regular text-xs lg:text-sm text-primary uppercase">
-            <p>День анона-бурундука</p>
-          </blockquote>{" "}
-          “Настоящий анон перебьется, он уйдет из городов в поля, в леса. Будет
-          собирать грибы, ягоды, орехи — анон готов в минуту больших печалей
-          превратиться в анон-бурундук, анон-хомяк, он будет запасать на зиму
-          всякие корешки, всякие луковки.” - Неизвестный
-        </span>
-      </div>
-      <div className="chat-footer">
-        <button className="btn btn-link no-underline">Ответить</button>
+        <div className="flex flex-row">
+          <img src={img1} alt="бурундук.жпг" className="flex w-1/4"></img>
+
+          <span className="flex flex-col text-base-content">
+            <p className="leading-relaxed subpixel-antialiased tracking-wide uppercase text-primary font-bold text-xl font-roboto-mono">
+              lorem ipsum
+            </p>
+
+
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Nam vitae elementum mi. Vivamus facilisis porta augue, non gravida mi dignissim a.
+            Sed cursus tortor varius arcu sodales, nec vehicula ex tincidunt.
+            Curabitur vitae quam feugiat justo pulvinar vehicula in at ex.
+            Curabitur vel ante condimentum, pharetra lacus eu, ultricies turpis.
+            Suspendisse semper auctor porta. Pellentesque eget massa at magna mollis hendrerit.
+            Aenean et tincidunt metus, a tincidunt neque. Curabitur placerat, risus eget sollicitudin sagittis, lectus massa vestibulum purus, vitae tempus eros quam eget libero.
+            Proin tempus dapibus tortor, feugiat imperdiet nunc mollis eget. Suspendisse at ex vehicula, rutrum tellus non, sollicitudin quam.
+            Sed tincidunt dui non diam dictum porta in at purus.
+            Sed sit amet lorem maximus, viverra nunc porttitor, tristique risus.
+            Praesent eu vulputate ipsum, at aliquet sapien.
+            Praesent sed justo eget mi iaculis porttitor a sed mi.
+          </span>
+        </div>
+        
+        <div className="chat-footer">
+        <ReplyBtn></ReplyBtn>
+        </div>
       </div>
     </div>
   );

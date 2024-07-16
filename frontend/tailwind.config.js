@@ -46,6 +46,8 @@ export default {
            '--btn-text-case': 'uppercase',   
            '--navbar-padding': '.5rem',      
            '--border-btn': '1px',
+
+
         },
       
       },
@@ -58,7 +60,12 @@ export default {
     ],
   },
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'press-start': ['"Press Start 2P"', 'sans-serif'],
+        'roboto-mono': ['"Roboto Mono"', 'monospace'],
+      },
+    },
   },
   variants: {},
   plugins: [require("daisyui")],

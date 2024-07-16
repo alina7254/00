@@ -16,8 +16,8 @@ class BoardController {
     fun getBoards() =
         listOf(
             Board(1, "/b "),
-            Board(2, "/po "),
-            Board(3, "/a "),
-            Board(4, "/vg ")
+            Board(2, "/a "),
+            Board(3, "/n "),
+            Board(4, "/s ")
         )
 }

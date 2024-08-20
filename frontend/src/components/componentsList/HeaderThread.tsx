@@ -12,10 +12,10 @@ const HeaderThread = () => {
           <span className="uppercase text-accent font-bold">op</span>
         </div>
         <div className="flex flex-row">
-          <img src={img1} alt="бурундук.жпг" className="flex w-1/4"></img>
+          <img src={img1} alt="бурундук.жпг" className="flex w-1/4 h-1/4"></img>
 
           <span className="flex flex-col text-base-content">
-            <p className="leading-relaxed subpixel-antialiased tracking-wide uppercase text-primary font-bold text-xl font-roboto-mono">
+            <p className="leading-relaxed subpixel-antialiased tracking-wide uppercase text-primary font-bold text-xl font-mono font-roboto-mono">
               lorem ipsum
             </p>
 

@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS threads (
+    id BIGSERIAL PRIMARY KEY,
+    board_id BIGINT NOT NULL REFERENCES boards(id) ON DELETE CASCADE,
+    title VARCHAR(255) NOT NULL,
+    blob TEXT,
+    time TIMESTAMP DEFAULT NOW()
+);
+

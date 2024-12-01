@@ -1,0 +1,15 @@
+{
+    "en_US": {
+      "navbar.title": "HACKEE.CHAN",
+      "navbar.info": "INFO",
+      "navbar.themes": "THEMES",
+      "search.placeholder": "search"
+    },
+    "ru_RU": {
+      "navbar.title": "БУРУНДУ.ЧАН",
+      "navbar.info": "ИНФО",
+      "navbar.themes": "ТЕМЫ",
+      "search.placeholder": "поиск"
+    }
+  }
+  

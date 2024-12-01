@@ -1,38 +1,25 @@
-import React, { useEffect, useState } from "react";
-import BoardDiv from "./Board/index.tsx";
-import { Board } from "../models.tsx";
-import {API_BASE_URL} from "./Constants";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { I18nextProvider } from 'react-i18next';
+import i18n from '../i18n';
+import Main from '../pages/Main';
+import BoardPage from '../pages/BoardPage';
+import ThreadPage from '../pages/ThreadPage';
 
-function App() {
-    const [boards, setBoards] = useState<Board[]>([]);
-
-    useEffect(() => {
-        const fetchBoards = async () => {
-            try {
-                const response = await fetch(API_BASE_URL + "/api/boards");
-                if (response.ok) {
-                    const data = await response.json();
-                    setBoards(data); // Assuming response is an array of Board objects
-                } else {
-                    console.error("Failed to fetch boards");
-                }
-            } catch (error) {
-                console.error("Error fetching boards:", error);
-            }
-        };
-
-        fetchBoards();
-    }, []);
-
+const App: React.FC = () => {
     return (
-        <div data-theme="dracula" className="hero min-h-screen bg-base-200">
-            <div className="hero-content">
-                {boards.map(board => (
-                    <BoardDiv board={board}></BoardDiv>
-                ))}
-            </div>
-        </div>
+        <I18nextProvider i18n={i18n}>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<Main />} />
+                    <Route path="/:currentBoard" element={<BoardPage />} />
+                    <Route path="/:currentBoard/:id" element={<ThreadPage />} />
+                </Routes>
+            </Router>
+        </I18nextProvider>
     );
-}
+};
 
 export default App;
+
+

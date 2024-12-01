@@ -1,29 +1,45 @@
 {
   "name": "frontend",
-  "version": "1.0.0",
-  "type": "module",
-  "license": "MIT",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
-    "@uiw/react-codemirror": "^4.21.24",
-    "daisyui": "^4.9.0",
-    "monaco-editor": "^0.46.0",
-    "prism-react-renderer": "^2.3.1",
+    "@headlessui/react": "^1.7.15",
+    "@heroicons/react": "^2.0.18",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jest": "^29.5.3",
+    "@types/node": "^20.4.8",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.3",
+    "axios": "^1.4.0",
+    "daisyui": "^3.9.4",
+    "flag-icons": "^7.2.3",
+    "i18next": "^23.3.1",
+    "i18next-browser-languagedetector": "^7.0.1",
+    "i18next-http-backend": "^2.1.0",
+    "postcss": "^8.4.41",
+    "postcss-load-config": "^3.1.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-monaco-editor": "^0.55.0",
-    "react-simple-code-editor": "^0.13.1",
-    "tailwind": "^4.0.0",
-    "tailwindcss": "^3.4.3",
-    "vite": "^5.2.7"
+    "react-i18next": "^13.1.4",
+    "react-icons": "^4.10.1",
+    "react-router-dom": "^6.14.2",
+    "tailwindcss": "^3.4.15",
+    "vite": "^4.4.9"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.2.1",
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38"
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react": "^7.33.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "sass": "^1.77.8",
+    "typescript": "^5.1.6"
   }
 }

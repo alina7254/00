@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: burunduchan
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/burunduchan
+    username: burunduchan
+    password: P@ssw0rd2024!
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  flyway:
+    baseline-on-migrate: true
+    enabled: true
+    locations: classpath:db/migration
+
+  logging:
+    level:
+      org.hibernate.SQL: DEBUG
+      org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+

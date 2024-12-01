@@ -1,23 +1,29 @@
 package hk.burunduchan.controller
 
-import hk.burunduchan.model.Board
-
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
-import java.util.concurrent.atomic.AtomicInteger
+import hk.burunduchan.dto.BoardDto
+import hk.burunduchan.service.BoardService
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("api")
-class BoardController {
-    private val counter = AtomicInteger()
+@RequestMapping("/api/boards")
+class BoardController(private val boardService: BoardService) {
 
-    @GetMapping("boards")
-    fun getBoards() =
-        listOf(
-            Board(1, "/b "),
-            Board(2, "/a "),
-            Board(3, "/n "),
-            Board(4, "/s ")
-        )
+    @GetMapping
+    fun getAllBoards(): ResponseEntity<List<BoardDto>> {
+        val boards = boardService.getAllBoards()
+        return ResponseEntity.ok(boards)
+    }
+
+    @PostMapping
+    fun createBoard(@RequestBody boardDto: BoardDto): ResponseEntity<BoardDto> {
+        val newBoard = boardService.createBoard(boardDto.name)
+        return ResponseEntity.ok(newBoard)
+    }
+
+    @GetMapping("/{id}/threads")
+    fun getThreadsByBoard(@PathVariable id: Int): ResponseEntity<List<Int>> {
+        val posts = boardService.getThreadsByBoard(id)
+        return ResponseEntity.ok(posts)
+    }
 }

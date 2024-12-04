@@ -12,15 +12,12 @@ class BoardService(private val boardRepository: BoardRepository) {
         return boardRepository.findAll().map { BoardDto(it.id, it.name) }
     }
 
-    fun getThreadsByBoard(boardName: String): List<T> {
-        return boardId != null) {
-            boardRepository.findAll().filter { it.id == boardId }.map { it.id!! }
-
+    fun getThreadsByBoard(board: BoardDto): List<Board> {
+        return boardRepository.findAllByBoard(board)
     }
 
-
-    fun createBoard(name: String): BoardDto {
-        val board = Board(name = name)
+    fun createBoard(boardName: String, id: String): BoardDto {
+        val board = Board(name = boardName, id = id)
         val savedBoard = boardRepository.save(board)
         return BoardDto(savedBoard.id, savedBoard.name)
     }

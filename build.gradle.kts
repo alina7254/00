@@ -1,17 +1,15 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
-
 plugins {
-    kotlin("jvm") version "1.9.10"
-    kotlin("plugin.spring") version "1.9.10"
-    kotlin("plugin.allopen") version "1.9.10"
-    kotlin("plugin.noarg") version "1.9.10"
+    kotlin("jvm") version "2.1.0"
+    kotlin("plugin.spring") version "2.1.0"
+    kotlin("plugin.allopen") version "2.1.0"
+    kotlin("plugin.noarg") version "2.1.0"
     id("org.springframework.boot") version "3.1.4"
     id("io.spring.dependency-management") version "1.1.3"
     id("org.flywaydb.flyway") version "9.22.0"
 }
 
 group = "hk.burunduchan"
-version = "0.0.1-SNAPSHOT"
+version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -21,6 +19,7 @@ repositories {
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin")
 
 
     implementation("org.springframework.boot:spring-boot-starter")
@@ -34,6 +33,7 @@ dependencies {
     implementation("org.flywaydb:flyway-core:9.22.0")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation(kotlin("test"))
 }
 
 tasks.withType<Test> {
@@ -42,14 +42,7 @@ tasks.withType<Test> {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(20)
-    }
-}
-
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = "20"
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
@@ -59,12 +52,6 @@ flyway {
     password = "P@ssw0rd2024!"
 }
 
-sourceSets {
-    main {
-        java {
-            srcDirs("src/main/kotlin")
-        }
-    }
-}
+
 
 

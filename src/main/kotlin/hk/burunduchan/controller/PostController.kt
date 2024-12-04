@@ -1,5 +1,6 @@
 package hk.burunduchan.controller
 
+import hk.burunduchan.dto.PostDto
 import hk.burunduchan.model.Post
 import hk.burunduchan.service.PostService
 import org.springframework.http.ResponseEntity
@@ -9,20 +10,20 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/posts")
 class PostController(private val postService: PostService) {
 
-    @GetMapping("/{boardName}")
-    fun getPostsByBoard(@PathVariable boardName: String): ResponseEntity<List<Post>> {
+    @GetMapping("boards/{boardName}")
+    fun getPostsByBoardName(@PathVariable boardName: String): ResponseEntity<List<Post>> {
         val posts = postService.getPostsByBoard(boardName)
         return ResponseEntity.ok(posts)
     }
 
 
-    @GetMapping("/{postNumber}")
+    @GetMapping("board/thread/{postNumber}")
     fun getPostByPostNumber(@PathVariable postNumber: Int) : ResponseEntity<List<Post>> {
         val post = postService.getPostByPostNumber(postNumber)
         return ResponseEntity.ok(post)
     }
 
-    @GetMapping("/replies/{replyTo}")
+    @GetMapping("thread/replies/{replyTo}")
     fun getReplies(@PathVariable replyTo: Int): ResponseEntity<List<Post>> {
         val replies = postService.getReplies(replyTo)
         return ResponseEntity.ok(replies)
@@ -30,11 +31,16 @@ class PostController(private val postService: PostService) {
 
 
     @PostMapping
-    fun createPost(@RequestBody postDto: PostDto): ResponseEntity<Post> {
-        val board = boardRepository.findByName(postDto.board?.name)
-            .orElseThrow { IllegalArgumentException("Board not found") }
-        val createdPost = postService.createPost(postDto, board)
-        return ResponseEntity.ok(createdPost)
+    fun createPost(@RequestBody postDto: PostDto): ResponseEntity<PostDto> {
+        val newPost = postService.createPost(
+            postDto.id,
+            postDto.postNumber.toString(),
+            postDto.board.toString(),
+            postDto.thread,
+            postDto.timestamp,
+            postDto.timestamp.toLocalDate().toString()
+        )
+        return ResponseEntity.ok(newPost)
     }
 
 

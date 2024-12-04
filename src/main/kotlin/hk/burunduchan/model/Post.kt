@@ -1,8 +1,8 @@
 package hk.burunduchan.model
 
 import jakarta.persistence.*
-import java.io.File
 import java.time.LocalDateTime
+import java.util.*
 
 @Entity
 @Table(name = "posts")
@@ -12,19 +12,27 @@ data class Post(
     val id: Int,
 
     @Column(name = "content")
-    val content: String? = null,
+    val content: String,
 
-    @Column(name = "author", nullable = false)
-    val author: String,
+    @Column(name = "post_number", nullable = false)
+    val postNumber: String,
 
     @Column(name = "timestamp", nullable = false)
     val timestamp: LocalDateTime = LocalDateTime.now(),
 
-    @Column(name = "op", nullable = false)
-    val op: Boolean = false,
+    @ManyToOne
+    @JoinColumn(name = "board_name", referencedColumnName = "name")
+    val board: Board?,
 
-    @Column(name = "post_number", nullable = false)
-    val postNumber: Int,
+    @ManyToOne
+    @JoinColumn(name = "thread_title", referencedColumnName = "title")
+    val thread: Optional<Thread>,
+
+    @Column(name = "author", nullable = false)
+    val author: String? = null,
+
+    @Column(name = "op", nullable = false)
+    val op: Boolean? = false,
 
     @Column(name = "title")
     val title: String? = null,
@@ -33,11 +41,7 @@ data class Post(
     val blob: String? = null,
 
     @ManyToOne
-    @JoinColumn(name = "board_id", referencedColumnName = "id")
-    val board: Board,
-
-    @ManyToOne
     @JoinColumn(name = "reply_to")
-    val replyTo: Post
+    val replyTo: Post? = null,
 )
 

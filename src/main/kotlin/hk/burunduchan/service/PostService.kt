@@ -1,14 +1,12 @@
 package hk.burunduchan.service
 
 import hk.burunduchan.dto.PostDto
-import hk.burunduchan.model.Board
 import hk.burunduchan.model.Post
 import hk.burunduchan.repository.BoardRepository
 import hk.burunduchan.repository.PostRepository
 import hk.burunduchan.repository.ThreadRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import java.time.LocalDateTime
 
 
 @Service
@@ -33,8 +31,7 @@ class PostService(
         id: Int,
         content: String,
         postNumber: String,
-        timestamp1: Board,
-        timestamp: LocalDateTime,
+        timestamp: String,
         boardName: String,
     ): PostDto? {
 
@@ -43,23 +40,28 @@ class PostService(
         val post = Post(
             id = id,
             content = content,
-            postNumber = postNumber,
             timestamp = timestamp,
-            board = board,
-            thread = thread
+            postNumber = Int,
+            board = String.toString(),
+            thread = String,
+            author = String.toString(),
+            title = String.toString(),
+
         )
         val savedPost = postRepository.save(post)
-        return savedPost.board?.let {
-            PostDto(
-                id = savedPost.id,
-                content = savedPost.content,
-                timestamp = savedPost.timestamp,
-                postNumber = savedPost.postNumber,
-                board = it,
-                thread = it,
-                replyTo = it
-                )
-        }
+        return PostDto(
+            id = savedPost.id,
+            content = savedPost.content,
+            timestamp = savedPost.timestamp,
+            postNumber = savedPost.postNumber,
+            board = savedPost.board.toString(),
+            thread = savedPost.thread.toString(),
+            op = savedPost.op,
+            title = savedPost.title,
+            blob = savedPost.blob,
+            author = savedPost.author,
+            replyTo = savedPost.replyTo.toString(),
+        )
     }
 
     @Transactional

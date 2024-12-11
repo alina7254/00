@@ -5,7 +5,6 @@ import hk.burunduchan.model.Thread
 import hk.burunduchan.repository.BoardRepository
 import hk.burunduchan.repository.ThreadRepository
 import org.springframework.stereotype.Service
-import java.time.LocalDateTime
 
 @Service
 class ThreadService(private val threadRepository: ThreadRepository,
@@ -15,28 +14,28 @@ class ThreadService(private val threadRepository: ThreadRepository,
         return threadRepository.findAll()
     }
 
-    fun createThread(id: Int,
-                     title: String,
-                     boardName: String,
-                     timestamp: LocalDateTime
+    fun createThread(
+        id: Int,
+        title: String,
+        boardName: String,
+        timestamp: String
     ): ThreadDto {
         val board =  boardRepository.findByName(boardName)
-        val thread = board?.let {
-            Thread(
-                id = id,
-                title = title,
-                board = it,
-                timestamp = timestamp
-            )
-        }
+        val thread = Thread(
+            id = id,
+            title = title,
+            board = board,
+            timestamp = timestamp,
+        )
 
         val savedThread = threadRepository.saveAndFlush(thread!!)
 
         return ThreadDto(
                 id = savedThread.id,
                 title = savedThread.title,
-                board = savedThread.board,
-                timestamp = savedThread.timestamp
+                board = savedThread.board.toString(),
+                timestamp = savedThread.timestamp,
+                blob = savedThread.blob,
             )
     }
 

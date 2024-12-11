@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository
 @Repository
 interface BoardRepository : JpaRepository<Board, String> {
     fun findAllByBoard(board: BoardDto) : List<Board>
-    fun findByName(name: String) : Board?
+    fun findByName(name: String) : List<Board>
 
 }

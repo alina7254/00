@@ -2,46 +2,42 @@ package hk.burunduchan.model
 
 import jakarta.persistence.*
 import java.time.LocalDateTime
-import java.util.*
 
 @Entity
 @Table(name = "posts")
 data class Post(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int,
+    val id: Long,
 
-    @Column(name = "content")
-    val content: String,
+    @Column(name = "content", nullable = true)
+    val content: String?,
 
     @Column(name = "post_number", nullable = false)
-    val postNumber: String,
+    val postNumber: Int,
 
     @Column(name = "timestamp", nullable = false)
     val timestamp: LocalDateTime = LocalDateTime.now(),
 
-    @ManyToOne
-    @JoinColumn(name = "board_name", referencedColumnName = "name")
-    val board: Board?,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "board_id", nullable = false)
+    val board: Board,
 
-    @ManyToOne
-    @JoinColumn(name = "thread_title", referencedColumnName = "title")
-    val thread: Optional<Thread>,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "thread_id", nullable = false)
+    val thread: Thread,
 
-    @Column(name = "author", nullable = false)
-    val author: String? = null,
+    @Column(name = "author", nullable = true)
+    val author: String? = "Anon",
 
     @Column(name = "op", nullable = false)
     val op: Boolean? = false,
 
-    @Column(name = "title")
-    val title: String? = null,
+    @Column(name = "blob", nullable = true)
+    val blob: String?,
 
-    @Column(name = "blob")
-    val blob: String? = null,
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "reply_to")
-    val replyTo: Post? = null,
+    val replyTo: Post? = null
 )
 

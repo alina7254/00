@@ -142,14 +142,14 @@ function MyComponent() {
                         >
                           <td
                             onClick={() => navigateThread(thread.currentBoard || "Unknown", thread.id)}
-                            className="border-t border-base-100 p-4 text-center text-primary"
+                            className="btn btn-line p-4 text-center text-primary"
                           >
                             {thread.title}
                           </td>
                           <td className="border-t border-base-100 p-4 text-center text-secondary">{lastPost.timestamp}</td>
                           <td
                             onClick={() => navigateBoard(thread.currentBoard || "Unknown")}
-                            className="border-t border-base-100 p-4 text-center text-primary lowercase"
+                            className="btn btn-line p-4 text-center text-primary lowercase"
                           >
                             /{thread.currentBoard || "Unknown"}/
                           </td>

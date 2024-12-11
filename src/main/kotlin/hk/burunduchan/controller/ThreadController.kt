@@ -8,37 +8,39 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api/threads")
+@RequestMapping("/api")
 class ThreadController(
     private val threadService: ThreadService,
     private val boardRepository: BoardRepository
 ) {
 
-    @GetMapping
-    fun getAllThreads(): ResponseEntity<List<ThreadDto>> {
+    @GetMapping("/threads")
+    fun getAllThreads(): ResponseEntity<MutableList<Thread>> {
         val threads = threadService.getAllThreads()
         return ResponseEntity.ok(threads)
     }
 
     @GetMapping("/{boardName}/threads")
-    fun getThreadsByBoardId(@PathVariable boardName: String): ResponseEntity<List<Thread>> {
-        val thread = threadService.getThreadsByBoardId(boardName)
+    fun getThreadsByBoardName(@PathVariable boardName: String): ResponseEntity<List<Thread>> {
+        val thread = threadService.getThreadsByBoardName(boardName)
         return ResponseEntity.ok(thread)
     }
 
-    @GetMapping("/{title}/threads")
+    @GetMapping("/{title}/thread")
     fun getThreadByTitle(@PathVariable title: String) : ResponseEntity<List<Thread>> {
         val thread = threadService.getThreadByTitle(title)
         return ResponseEntity.ok(thread)
     }
 
-    @PostMapping
+    @PostMapping("threads")
     fun createThread(
-        @RequestParam boardName: String,
-        @RequestParam title: String): ResponseEntity<ThreadDto> {
-        val board = boardRepository.findById(boardName)
-            .orElseThrow { IllegalArgumentException("Board with id $boardName not found") }
-        val newThread = threadService.createThread(title, board)
+        @RequestParam threadDto: ThreadDto): ResponseEntity<ThreadDto> {
+        val newThread = threadService.createThread(
+            threadDto.id,
+            threadDto.title,
+            threadDto.board,
+            threadDto.timestamp
+        )
         return ResponseEntity.ok(newThread)
     }
 }

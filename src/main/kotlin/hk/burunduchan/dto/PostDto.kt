@@ -1,19 +1,20 @@
 package hk.burunduchan.dto
 
-import hk.burunduchan.model.Board
-import hk.burunduchan.model.Post
-import java.io.File
-import java.time.LocalDateTime
+import kotlinx.serialization.Contextual
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class PostDto(
     val id: Int,
-    val content: String? = null,
-    val author: String,
-    val timestamp: LocalDateTime = LocalDateTime.now(),
-    val op: Boolean = false,
-    val postNumber: Int,
-    val title: String? = null,
-    val blob: String? = null,
-    val board: BoardDto,
-    val replyTo: Post
+    val content: String?,
+    val author: String?,
+    val timestamp: String,
+    val op: Boolean?,
+    @Contextual
+    val postNumber: Int.Companion,
+    val title: String?,
+    val blob: String?,
+    val board: String?,
+    val thread: String?,
+    val replyTo: String
 )

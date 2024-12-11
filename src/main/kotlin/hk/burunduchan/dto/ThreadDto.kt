@@ -1,12 +1,13 @@
 package hk.burunduchan.dto
 
-import java.time.LocalDateTime
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ThreadDto(
     val id: Int,
     val title: String,
-    val board: BoardDto,
-    val blob: String? = null,
-    val timestamp: LocalDateTime = LocalDateTime.now()
+    val board: String,
+    val blob: String?,
+    val timestamp: String
 )
 
